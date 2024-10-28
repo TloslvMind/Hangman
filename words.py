@@ -1,0 +1,1 @@
+word_list = ['camel', 'raccoon', 'crocodile', 'president', 'efficiency', 'currency']

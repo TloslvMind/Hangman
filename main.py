@@ -1,16 +1,16 @@
 from random import choice
 from images import logo, status
-
+from words import word_list
 
 print(logo)
 
-word_list = ['camel', 'raccoon', 'crocodile', 'president', 'efficiency', 'currency']
+
 
 guess_word = choice(word_list)
 len_word = len(guess_word)
-count = 0
+lives = 0
 underscores = ['_'] * len_word
-while count < len_word and '_' in underscores:
+while lives < len_word and '_' in underscores:
     print(f"Word to guess: {''.join(underscores)}")
     letter = input("Guess a letter: ").lower()
     if letter in guess_word:
@@ -19,14 +19,14 @@ while count < len_word and '_' in underscores:
                     underscores[i] = letter
     else:
         print(f"You guessed {letter}, that's not in the word. You lose a life.")
-        if count + 1 == len_word:
+        if lives + 1 == len_word:
             print(status[-1])
-        elif len(status) < count + 2:
+        elif len(status) < lives + 2:
             print(status[-2])
         else:
-            print(status[count])
-        count += 1
-    print(f"\n**************************** {len_word - count}/{len_word} LIVES LEFT****************************")
+            print(status[lives])
+        lives += 1
+    print(f"\n**************************** {len_word - lives}/{len_word} LIVES LEFT****************************")
 
 if '_' not in underscores:
     print(f"Congratulations! You guessed the word correctly. -->> {guess_word}")
