@@ -1,59 +1,8 @@
 from random import choice
-
-print('''
- _                                             
-| |                                            
-| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
-| '_ \\ / _' | '_ \\ / _' | '_ ' _ \\ / _' | '_ \\ 
-| | | | (_| | | | | (_| | | | | | | (_| | | | |
-|_| |_|\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|
-                    __/ |                      
-                   |___/\n''')
+from images import logo, status
 
 
-status = ['''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\\ |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\\  
- /    |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
- /|\\ |
- / \\ |
-      |
-=========''']
+print(logo)
 
 word_list = ['camel', 'raccoon', 'crocodile', 'president', 'efficiency', 'currency']
 
@@ -70,9 +19,14 @@ while count < len_word and '_' in underscores:
                     underscores[i] = letter
     else:
         print(f"You guessed {letter}, that's not in the word. You lose a life.")
-        print(status[count])
+        if count + 1 == len_word:
+            print(status[-1])
+        elif len(status) < count + 2:
+            print(status[-2])
+        else:
+            print(status[count])
         count += 1
-    print(f"\n****************************{len_word - count}/{len_word} LIVES LEFT****************************")
+    print(f"\n**************************** {len_word - count}/{len_word} LIVES LEFT****************************")
 
 if '_' not in underscores:
     print(f"Congratulations! You guessed the word correctly. -->> {guess_word}")
